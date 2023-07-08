@@ -10,11 +10,19 @@ config_version=5
 
 [application]
 
-config/name="GameTemplate"
+config/name="Apple"
 run/main_scene="res://Menus/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[debug]
+
+shapes/navigation/geometry_face_disabled_color=Color(0.501961, 0.501961, 0.501961, 0.4)
+
 [display]
 
 window/stretch/mode="canvas_items"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0941176, 0.580392, 0.14902, 1)

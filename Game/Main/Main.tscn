@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3jwnnd27qrph"]
+[gd_scene load_steps=9 format=3 uid="uid://b3jwnnd27qrph"]
 
 [ext_resource type="Script" path="res://Game/Main/SnakesSpawner.gd" id="1_nergm"]
 [ext_resource type="Script" path="res://Game/Main/Game.gd" id="1_ot3iw"]
 [ext_resource type="Script" path="res://Game/Main/Main.gd" id="1_umuub"]
-[ext_resource type="PackedScene" uid="uid://ceggt2l0nwwoh" path="res://Game/Main/Apple/Player/Player.tscn" id="2_dftar"]
 [ext_resource type="Script" path="res://Game/Main/ApplesSpawner.gd" id="2_u2rm0"]
 [ext_resource type="Script" path="res://Game/Main/Timer.gd" id="5_pcnv7"]
 [ext_resource type="Texture2D" uid="uid://yphkhdf6aere" path="res://Assets/RestartButton.png" id="7_2ydrc"]
@@ -25,9 +24,6 @@ script = ExtResource("1_nergm")
 
 [node name="Apples" type="Node2D" parent="Game"]
 script = ExtResource("2_u2rm0")
-
-[node name="Player" parent="Game/Apples" instance=ExtResource("2_dftar")]
-position = Vector2(232, 73)
 
 [node name="SnakeTrails" type="Node2D" parent="Game"]
 

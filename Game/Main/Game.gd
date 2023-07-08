@@ -13,17 +13,14 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	
-	var x: float = rng.randf()*screenSize.x
-	var y: float = rng.randf()*screenSize.y
-	
-	$Apples/Player.position = Vector2(x, y)
-	
-	for i in start_snakes:
-		snakes_spawner.add_new_snake()
 	for i in start_apples:
 		apples_spawner.add_new_apple()
+	for i in start_snakes:
+		snakes_spawner.add_new_snake()
+		
+	spawn_player()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if Engine.get_process_frames() % time_between_snakes_spawn == 0:
 		
@@ -33,3 +30,35 @@ func _process(delta: float) -> void:
 		var pos: Vector2 = rand_snake.position
 		
 		snakes_spawner.add_new_snake_with_position(pos)
+
+func spawn_player():
+	var player: Player = preload('res://Game/Main/Apple/Player/Player.tscn').instantiate()
+	
+	#yes it's shitcode that was used for declaring x and y without error
+	if true: 
+		var x: float = rng.randf()*screenSize.x
+		var y: float = rng.randf()*screenSize.y
+		
+		player.position = Vector2(x, y)
+	
+	while nearest_distance_from_point_to_snake(player.position) < 300:
+		
+		var x: float = rng.randf()*screenSize.x
+		var y: float = rng.randf()*screenSize.y
+		
+		player.position = Vector2(x, y)
+		
+	get_node("Apples").add_child(player)
+	
+	
+func nearest_distance_from_point_to_snake(p: Vector2) -> float:
+	
+	var nearest_dist: float = 999999
+	
+	for snake in get_node("Snakes").get_children():
+		var dist = snake.position.distance_to(p)
+		
+		if nearest_dist > dist:
+			nearest_dist = dist
+	
+	return nearest_dist
