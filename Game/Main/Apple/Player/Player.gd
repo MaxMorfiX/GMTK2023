@@ -15,9 +15,11 @@ func _process(delta: float) -> void:
 		position.x -= moveSpeed*delta
 	elif Input.is_action_pressed("ui_right"):
 		position.x += moveSpeed*delta
-		
-	position.x = posmod(int(position.x), int(screenSize.x))
-	position.y = posmod(int(position.y), int(screenSize.y))
+#
+#	position.x = fposmod(position.x, screenSize.x)
+#	position.y = fposmod(position.y, screenSize.y)
+	position.x = clamp(position.x, 0, screenSize.x)
+	position.y = clamp(position.y, 0, screenSize.y)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Snake:
