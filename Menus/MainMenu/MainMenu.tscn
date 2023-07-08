@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct54x32na6n6k"]
+[gd_scene load_steps=6 format=3 uid="uid://ct54x32na6n6k"]
 
-[ext_resource type="Theme" uid="uid://dqnp3k0efg6v6" path="res://Menus/main_theme.tres" id="1_ukn2b"]
+[ext_resource type="Texture2D" uid="uid://cxnrjvxpwm8h2" path="res://Assets/PlayButton.png" id="2_5wlqb"]
 [ext_resource type="Script" path="res://Menus/MainMenu/MainMenu.gd" id="2_chuel"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_okuas"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_rwgij"]
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_qmfmh"]
+font_size = 20
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -10,10 +19,11 @@ script = ExtResource("2_chuel")
 
 [node name="Control" type="Control" parent="MainMenu"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("1_ukn2b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Credits" type="Label" parent="MainMenu/Control"]
 layout_mode = 1
@@ -22,13 +32,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 536.0
-offset_top = 585.0
-offset_right = 576.0
-offset_bottom = 608.0
+offset_left = -77.5
+offset_top = -26.0
+offset_right = 77.5
 grow_horizontal = 2
 grow_vertical = 0
 text = "Made by MaxMorfiX"
+label_settings = SubResource("LabelSettings_okuas")
+horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="MainMenu/Control"]
 layout_mode = 1
@@ -37,14 +48,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 481.0
-offset_top = 275.5
-offset_right = 631.0
-offset_bottom = 332.5
+offset_left = -100.0
+offset_top = -64.0
+offset_right = 100.0
+offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
-text = "Play"
+icon = ExtResource("2_5wlqb")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="GameLogo" type="Label" parent="MainMenu/Control"]
 layout_mode = 1
@@ -53,18 +67,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 406.0
-offset_top = 182.0
-offset_right = 706.0
-offset_bottom = 257.0
+offset_left = -150.0
+offset_top = -244.0
+offset_right = 150.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Apple"
+label_settings = SubResource("LabelSettings_rwgij")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="Splash" type="Label" parent="MainMenu/Control/GameLogo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = 73.0
+offset_right = 158.5
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "What if you was an apple in Snake game?"
+label_settings = SubResource("LabelSettings_qmfmh")
 
 [connection signal="pressed" from="MainMenu/Control/PlayButton" to="MainMenu" method="play"]
