@@ -14,7 +14,16 @@ var length = 50
 var target: Apple
 
 func _ready() -> void:
-	get_parent().get_node('SnakeTrails').add_child(trail)
+	get_parent().get_parent().get_node('SnakeTrails').add_child(trail)
+	
+	trail.gradient = Gradient.new()
+	
+	trail.gradient.offsets = [0, 1]
+	trail.gradient.colors = [
+		Color(0, 0, 0),
+		Color.from_hsv(rng.randf(), 1, 1)
+	]
+	
 	_on_change_target_timer_timeout()
 
 func _process(delta: float) -> void:

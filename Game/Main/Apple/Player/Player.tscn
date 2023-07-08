@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceggt2l0nwwoh"]
+[gd_scene load_steps=4 format=3 uid="uid://ceggt2l0nwwoh"]
 
 [ext_resource type="PackedScene" uid="uid://dp8pxio0j1r56" path="res://Game/Main/Apple/Apple.tscn" id="1_thps8"]
 [ext_resource type="Script" path="res://Game/Main/Apple/Player/Player.gd" id="2_iosex"]
+[ext_resource type="Texture2D" uid="uid://dwdjxl74g24md" path="res://Assets/GoldenApple.webp" id="3_jlexj"]
 
 [node name="Player" instance=ExtResource("1_thps8")]
 script = ExtResource("2_iosex")
-moveSpeed = 400
+moveSpeed = 350
+
+[node name="Icon" parent="." index="0"]
+texture = ExtResource("3_jlexj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

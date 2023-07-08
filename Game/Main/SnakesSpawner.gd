@@ -5,15 +5,21 @@ class_name SnakesSpawner
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var screenSize: Vector2 = get_viewport().get_visible_rect().size
 
-func add_new_snake():
-	call_deferred("_really_add_new_snake")
-	
-func _really_add_new_snake():
-	var new_snake: Snake = preload('res://Game/Main/Snake/Snake.tscn').instantiate()
+func add_new_snake() -> Snake:
 	
 	var x: float = rng.randf()*screenSize.x
 	var y: float = rng.randf()*screenSize.y
 	
-	new_snake.position = Vector2(x, y)
+	return add_new_snake_with_position(Vector2(x, y))
 	
-	add_child(new_snake)
+func add_new_snake_with_position(pos: Vector2) -> Snake:
+	return call_deferred("_really_add_new_snake", pos)
+	
+func _really_add_new_snake(pos: Vector2) -> Snake:
+	var snake: Snake = preload('res://Game/Main/Snake/Snake.tscn').instantiate()	
+	
+	snake.position = pos
+	
+	add_child(snake)
+	
+	return snake

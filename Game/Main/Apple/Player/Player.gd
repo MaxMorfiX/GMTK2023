@@ -2,7 +2,7 @@ extends Apple
 
 class_name Player
 
-@export_range(100, 500) var moveSpeed = 400
+@export_range(100, 500) var moveSpeed = 350
 @onready var screenSize: Vector2 = get_viewport().get_visible_rect().size
 
 func _process(delta: float) -> void:
@@ -24,3 +24,4 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Snake:
 		print("game over!")
+		get_tree().current_scene.game_over()

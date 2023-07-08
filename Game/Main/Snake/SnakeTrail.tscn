@@ -4,12 +4,11 @@
 _data = [Vector2(0, 0.168421), 0.0, 0.0, 0, 0, Vector2(0.56701, 1), 2.68914e-07, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_kor5w"]
-colors = PackedColorArray(0.270588, 0, 0, 1, 1, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_1cvs1"]
 
 [node name="SnakeTrail" type="Line2D"]
 width = 15.0
 width_curve = SubResource("Curve_6vylq")
-gradient = SubResource("Gradient_kor5w")
+gradient = SubResource("Gradient_1cvs1")
 joint_mode = 2
 end_cap_mode = 2
