@@ -42,6 +42,7 @@ label_settings = SubResource("LabelSettings_okuas")
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="MainMenu/Control"]
+self_modulate = Color(0.141176, 0.294118, 0.988235, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
