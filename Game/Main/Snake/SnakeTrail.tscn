@@ -8,6 +8,7 @@ point_count = 2
 colors = PackedColorArray(0.270588, 0, 0, 1, 1, 0, 0, 1)
 
 [node name="SnakeTrail" type="Line2D"]
+width = 15.0
 width_curve = SubResource("Curve_6vylq")
 gradient = SubResource("Gradient_kor5w")
 joint_mode = 2

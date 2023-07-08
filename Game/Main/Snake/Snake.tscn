@@ -1,32 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cawr2rx46ov2t"]
+[gd_scene load_steps=3 format=3 uid="uid://cawr2rx46ov2t"]
 
 [ext_resource type="Script" path="res://Game/Main/Snake/Snake.gd" id="1_bj8ib"]
-[ext_resource type="Texture2D" uid="uid://8xifvxtnw070" path="res://icon.svg" id="2_aqjqh"]
-
-[sub_resource type="Curve" id="Curve_k7fvy"]
-_data = [Vector2(0, 0.168421), 0.0, 0.0, 0, 0, Vector2(0.56701, 1), 2.68914e-07, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_hjqtt"]
-colors = PackedColorArray(0.270588, 0, 0, 1, 1, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mq4vp"]
+radius = 15.0
 
 [node name="Snake" type="Area2D"]
 script = ExtResource("1_bj8ib")
 max_rotate_speed = 10.0
+ang_deceleration = 1.0
 moveSpeed = 300.0
-
-[node name="SnakeTrail" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-width_curve = SubResource("Curve_k7fvy")
-gradient = SubResource("Gradient_hjqtt")
-joint_mode = 2
-end_cap_mode = 2
-
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.145, 0.145)
-texture = ExtResource("2_aqjqh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mq4vp")
@@ -34,4 +17,5 @@ shape = SubResource("CircleShape2D_mq4vp")
 [node name="ChangeTargetTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ChangeTargetTimer" to="." method="_on_change_target_timer_timeout"]

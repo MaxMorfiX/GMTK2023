@@ -37,6 +37,12 @@ func _process(delta: float) -> void:
 	trail.set_points(points)
 	
 func ai_process(delta: float) -> void:
+	
+	var wr = weakref(target);
+	if not wr.get_ref():
+		target = get_new_target()
+		return
+	
 	var ang: float = get_angle_to(target.position)
 	
 	var speed_ratio = 1.0
@@ -53,6 +59,11 @@ func get_new_target() -> Apple:
 
 	# Calculate distances and assign weights
 	for apple in apples:
+		
+		var wr = weakref(apple);
+		if not wr.get_ref():
+			apples.earse(apple)
+		
 		var distance = position.distance_to(apple.position)
 		distances.push_back(distance)
 
@@ -83,3 +94,18 @@ func get_new_target() -> Apple:
 func _on_change_target_timer_timeout() -> void:
 	
 	target = get_new_target()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	
+	if area is Apple:
+		
+		var apple = area
+		
+		if apple.picked: return
+		
+		length += apple.mass
+		
+		apple.pick()
+		
+		target = get_new_target()
