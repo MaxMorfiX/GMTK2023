@@ -38,10 +38,18 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 
-[node name="Timer" type="Label" parent="CanvasLayer/Control"]
+[node name="TimeRecord" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_right = 163.0
 offset_bottom = 45.0
+text = "Record: 00:00"
+label_settings = SubResource("LabelSettings_aw7w0")
+
+[node name="Time" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 163.0
+offset_bottom = 90.0
 text = "Time: 00:00"
 label_settings = SubResource("LabelSettings_aw7w0")
 script = ExtResource("5_pcnv7")

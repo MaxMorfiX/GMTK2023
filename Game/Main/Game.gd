@@ -6,7 +6,7 @@ extends Node2D
 
 @onready var snakes_spawner: SnakesSpawner = $Snakes
 @onready var apples_spawner: ApplesSpawner = $Apples
-@onready var timer = get_parent().get_node("CanvasLayer/Control/Timer")
+@onready var timer = get_parent().get_node("CanvasLayer/Control/Time")
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var screenSize: Vector2 = get_viewport().get_visible_rect().size
