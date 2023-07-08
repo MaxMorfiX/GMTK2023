@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name ApplesSpawner
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var screenSize: Vector2 = get_viewport().get_visible_rect().size
 

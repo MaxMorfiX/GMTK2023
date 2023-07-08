@@ -6,3 +6,5 @@
 [node name="Player" instance=ExtResource("1_thps8")]
 script = ExtResource("2_iosex")
 moveSpeed = 400
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

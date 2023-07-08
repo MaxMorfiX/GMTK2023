@@ -6,11 +6,13 @@ class_name Apple
 
 var picked = false
 
+@onready var apple_spawner = get_parent()
+
 func pick():
 	
 	picked = true
 	
-	get_parent().add_new_apple()
+	apple_spawner.add_new_apple()
 	
 	self.queue_free()
 

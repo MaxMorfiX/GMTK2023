@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_mq4vp"]
 radius = 15.0
 
-[node name="Snake" type="Area2D"]
+[node name="Snake" type="Area2D" groups=["Snakes"]]
 script = ExtResource("1_bj8ib")
 max_rotate_speed = 10.0
 ang_deceleration = 1.0
