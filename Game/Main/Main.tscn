@@ -1,16 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3jwnnd27qrph"]
+[gd_scene load_steps=4 format=3 uid="uid://b3jwnnd27qrph"]
 
-[ext_resource type="PackedScene" uid="uid://cawr2rx46ov2t" path="res://Game/Main/Snake/Snake.tscn" id="1_owefl"]
+[ext_resource type="PackedScene" uid="uid://cawr2rx46ov2t" path="res://Game/Main/Snake/Snake.tscn" id="1_s42fb"]
+[ext_resource type="PackedScene" uid="uid://0qkiauwpytfj" path="res://Game/Main/Apple/Player/Player.tscn" id="2_dftar"]
+[ext_resource type="PackedScene" uid="uid://dp8pxio0j1r56" path="res://Game/Main/Apple/Apple.tscn" id="3_1vh2a"]
 
 [node name="Main" type="Node2D"]
-position = Vector2(0, 2)
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="SnakeTrails" type="Node2D" parent="Game"]
+[node name="Snakes" type="Node2D" parent="Game"]
 
-[node name="Snake" parent="Game" instance=ExtResource("1_owefl")]
-position = Vector2(305, 142)
+[node name="SnakeTrails" type="Node2D" parent="Game/Snakes"]
 
-[node name="Snake2" parent="Game" instance=ExtResource("1_owefl")]
-position = Vector2(381, 77)
+[node name="Snake" parent="Game/Snakes" instance=ExtResource("1_s42fb")]
+position = Vector2(168, 239)
+ang_deceleration = 1.0
+
+[node name="Apples" type="Node2D" parent="Game"]
+
+[node name="Player" parent="Game/Apples" instance=ExtResource("2_dftar")]
+position = Vector2(232, 73)
+
+[node name="Apple" parent="Game/Apples" instance=ExtResource("3_1vh2a")]
+position = Vector2(278, 284)
+
+[node name="Apple2" parent="Game/Apples" instance=ExtResource("3_1vh2a")]
+position = Vector2(535, 80)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://0qkiauwpytfj"]
+
+[ext_resource type="PackedScene" uid="uid://dp8pxio0j1r56" path="res://Game/Main/Apple/Apple.tscn" id="1_thps8"]
+[ext_resource type="Script" path="res://Game/Main/Apple/Player/Player.gd" id="2_iosex"]
+
+[node name="Player" instance=ExtResource("1_thps8")]
+script = ExtResource("2_iosex")
+moveSpeed = 400

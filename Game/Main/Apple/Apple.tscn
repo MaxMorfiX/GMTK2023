@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp8pxio0j1r56"]
+
+[ext_resource type="Script" path="res://Game/Main/Apple/Apple.gd" id="1_oe610"]
+[ext_resource type="Texture2D" uid="uid://8xifvxtnw070" path="res://icon.svg" id="2_8y3ow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3om3n"]
+size = Vector2(32, 32)
+
+[node name="Apple" type="Area2D"]
+script = ExtResource("1_oe610")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_8y3ow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3om3n")
