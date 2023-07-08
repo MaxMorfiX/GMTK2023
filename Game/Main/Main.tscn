@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://b3jwnnd27qrph"]
+[gd_scene load_steps=2 format=3 uid="uid://b3jwnnd27qrph"]
+
+[ext_resource type="PackedScene" uid="uid://cawr2rx46ov2t" path="res://Game/Main/Snake/Snake.tscn" id="1_owefl"]
 
 [node name="Main" type="Node2D"]
+position = Vector2(0, 2)
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="SnakeTrails" type="Node2D" parent="Game"]
+
+[node name="Snake" parent="Game" instance=ExtResource("1_owefl")]
+position = Vector2(305, 142)
+
+[node name="Snake2" parent="Game" instance=ExtResource("1_owefl")]
+position = Vector2(381, 77)
