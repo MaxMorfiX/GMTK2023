@@ -17,9 +17,9 @@ func _process(delta: float) -> void:
 	
 	text = "Time: " + str_time(time)
 
-func str_time(time: float) -> String:
-	var mils = fmod(time, 1)*100
-	var secs = fmod(time, 60)
-	var mins = time / 60
+func str_time(time_to_stingify: float) -> String:
+	var mils = fmod(time_to_stingify, 1)*100
+	var secs = fmod(time_to_stingify, 60)
+	var mins = time_to_stingify / 60
 	
 	return "%02d:%02d.%02d" % [mins, secs, mils]
