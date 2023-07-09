@@ -20,17 +20,6 @@ func _ready() -> void:
 		
 	spawn_player()
 
-func _process(_delta: float) -> void:
-	
-	if Engine.get_process_frames() % time_between_snakes_spawn == 0:
-		
-		var snakes: Array[Node] = snakes_spawner.get_children()
-		var rand_snake: Snake = snakes[rng.randf()*snakes.size()]
-		
-		var pos: Vector2 = rand_snake.position
-		
-		snakes_spawner.add_new_snake_with_position(pos)
-
 func spawn_player():
 	var player: Player = preload('res://Game/Main/Apple/Player/Player.tscn').instantiate()
 	

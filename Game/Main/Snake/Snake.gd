@@ -110,17 +110,24 @@ func change_target() -> void:
 	
 	target = get_new_target()
 
-
 func _on_area_entered(area: Area2D) -> void:
 	
-	if area is Apple:
+	if not area is Apple: return
 		
-		var apple = area
-		
-		if apple.picked: return
-		
-		length += apple.mass
-		
-		apple.pick()
-		
-		change_target()
+	var apple = area
+	
+	if apple.picked: return
+	
+	length += apple.mass
+	
+	apple.pick()
+	
+	change_target()
+	
+	if rng.randf() > 0.9: reproduce()
+
+func reproduce():
+	
+	var pos: Vector2 = position
+	
+	get_parent().add_new_snake_with_position(pos)
