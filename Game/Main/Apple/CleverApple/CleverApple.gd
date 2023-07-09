@@ -2,7 +2,7 @@ extends Apple
 
 class_name CleverApple
 
-var move_speed = 350
+var move_speed = 100
 
 @onready var screen_size: Vector2 = get_viewport().get_visible_rect().size
 @onready var snakes_container = get_parent().get_parent().get_node("Snakes") #I'm too lazy to make this more readable
@@ -37,21 +37,41 @@ func _process(delta: float) -> void:
 
 func get_nearest_snake() -> Snake:
 	var snakes = snakes_container.get_children()
-	
-	var nearest_snake: Snake
-	var nearest_sqr_dist: float = 9999999
-	
+	var distances: Array[float] = []
+
+	# Calculate distances and assign weights
 	for snake in snakes:
-		var dist = position.distance_squared_to(snake.position)
 		
-		if dist < nearest_sqr_dist:
-			nearest_sqr_dist = dist
-			nearest_snake = snake
-			
-#	print("snakes: " + str(snakes))
-#	print("nearest snake: " + str(nearest_snake))
+		var wr = weakref(snake);
+		if not wr.get_ref():
+			snakes.earse(snake)
+		
+		var distance = position.distance_to(snake.position)
+		distances.push_back(distance)
+
+	# Calculate weights based on inverse distances
+	var total_weight = 0.0
+	var weights: Array[float] = []
+	for distance in distances:
+		var weight = 1.0 / distance  # Inverse of distance
+		weights.push_back(weight)
+		total_weight += weight
+
+	# Normalize the weights
+	for i in range(weights.size()):
+		weights[i] /= total_weight
+
+	# Generate a random number between 0 and 1
+	var random_value = randf()
+
+	# Select the snake based on weights
+	var cumulative_weight = 0.0
+	for i in range(snakes.size()):
+		cumulative_weight += weights[i]
+		if random_value <= cumulative_weight:
+			return snakes[i]
 	
-	return nearest_snake
+	return snakes[0]
 
 func update_nearest_snake() -> void:
 	nearest_snake = get_nearest_snake()
