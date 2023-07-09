@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq6fxt734xdny"]
+
+[ext_resource type="Script" path="res://Singletons/TransitionAnimation/TransitionAnimator.gd" id="1_uumgp"]
+
+[node name="TransitionAnimatinon" type="Node2D"]
+z_index = 17
+script = ExtResource("1_uumgp")

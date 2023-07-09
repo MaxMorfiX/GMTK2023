@@ -13,11 +13,12 @@ config_version=5
 config/name="Apple"
 run/main_scene="res://Menus/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
-Game="*res://Game/Singletons/Game.gd"
+Game="*res://Singletons/Game.gd"
+SceneManager="*res://Singletons/SceneManager.gd"
 
 [debug]
 
@@ -26,6 +27,10 @@ shapes/navigation/geometry_face_disabled_color=Color(0.501961, 0.501961, 0.50196
 [display]
 
 window/stretch/mode="canvas_items"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

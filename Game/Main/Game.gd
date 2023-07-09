@@ -11,14 +11,14 @@ extends Node2D
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var screenSize: Vector2 = get_viewport().get_visible_rect().size
 
-func _ready() -> void:
+var spawned_player: bool = false
+
+func start_game() -> void:
 	
 	for i in start_apples:
 		apples_spawner.add_new_apple()
 	for i in start_snakes:
 		snakes_spawner.add_new_snake()
-		
-	spawn_player()
 
 func spawn_player():
 	var player: Player = preload('res://Game/Main/Apple/Player/Player.tscn').instantiate()
@@ -29,7 +29,7 @@ func spawn_player():
 		var y: float = rng.randf()*screenSize.y
 		
 		player.position = Vector2(x, y)
-	
+		
 	while nearest_distance_from_point_to_snake(player.position) < 300:
 		
 		var x: float = rng.randf()*screenSize.x
@@ -38,8 +38,7 @@ func spawn_player():
 		player.position = Vector2(x, y)
 		
 	get_node("Apples").add_child(player)
-	
-	
+
 func nearest_distance_from_point_to_snake(p: Vector2) -> float:
 	
 	var nearest_dist: float = 999999
@@ -51,3 +50,8 @@ func nearest_distance_from_point_to_snake(p: Vector2) -> float:
 			nearest_dist = dist
 	
 	return nearest_dist
+
+func _process(delta: float) -> void:
+	if not spawned_player and $Snakes.get_child_count() > 0:
+		spawn_player()
+		spawned_player = true

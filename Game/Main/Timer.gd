@@ -1,7 +1,7 @@
 extends Label
 
 var time: float
-var active: bool = true
+var active: bool = false
 
 var record: float
 

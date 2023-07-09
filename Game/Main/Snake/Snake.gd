@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 	trail.gradient.offsets = [0, 1]
 	trail.gradient.colors = [
-		Color(0, 0, 0),
+		Color.from_hsv(hue, 1, 0.5),
 		Color.from_hsv(hue, 1, 1)
 	]
 
