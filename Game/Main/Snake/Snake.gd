@@ -27,8 +27,6 @@ func _ready() -> void:
 		Color(0, 0, 0),
 		Color.from_hsv(hue, 1, 1)
 	]
-	
-	_on_change_target_timer_timeout()
 
 func _process(delta: float) -> void:
 	
@@ -50,6 +48,10 @@ func _process(delta: float) -> void:
 	trail.set_points(points)
 	
 func ai_process(delta: float) -> void:
+	
+	if target == null:
+		change_target()
+		return
 	
 	var wr = weakref(target);
 	if not wr.get_ref():
@@ -104,7 +106,7 @@ func get_new_target() -> Apple:
 	
 	return apples[0]
 
-func _on_change_target_timer_timeout() -> void:
+func change_target() -> void:
 	
 	target = get_new_target()
 
@@ -121,4 +123,4 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		apple.pick()
 		
-		target = get_new_target()
+		change_target()

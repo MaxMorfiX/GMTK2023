@@ -9,7 +9,7 @@ func add_new_apple():
 	call_deferred("_really_add_new_apple")
 	
 func _really_add_new_apple():
-	var new_apple: Apple = preload('res://Game/Main/Apple/Apple.tscn').instantiate()
+	var new_apple: Apple = preload('res://Game/Main/Apple/CleverApple/CleverApple.tscn').instantiate()
 	
 	var x: float = rng.randf()*screenSize.x
 	var y: float = rng.randf()*screenSize.y
