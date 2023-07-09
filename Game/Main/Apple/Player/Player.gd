@@ -7,13 +7,13 @@ class_name Player
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("player_up"):
 		position.y -= moveSpeed*delta
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("player_down"):
 		position.y += moveSpeed*delta
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("player_left"):
 		position.x -= moveSpeed*delta
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("player_right"):
 		position.x += moveSpeed*delta
 #
 #	position.x = fposmod(position.x, screenSize.x)
