@@ -16,12 +16,16 @@ var target: Apple
 func _ready() -> void:
 	get_parent().get_parent().get_node('SnakeTrails').add_child(trail)
 	
+	var hue = rng.randf()
+	
+	$SnakeHead.self_modulate = Color.from_hsv(hue, 1, 0.7)
+	
 	trail.gradient = Gradient.new()
 	
 	trail.gradient.offsets = [0, 1]
 	trail.gradient.colors = [
 		Color(0, 0, 0),
-		Color.from_hsv(rng.randf(), 1, 1)
+		Color.from_hsv(hue, 1, 1)
 	]
 	
 	_on_change_target_timer_timeout()

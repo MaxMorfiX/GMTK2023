@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct54x32na6n6k"]
+[gd_scene load_steps=8 format=3 uid="uid://ct54x32na6n6k"]
 
 [ext_resource type="Texture2D" uid="uid://cxnrjvxpwm8h2" path="res://Assets/PlayButton.png" id="2_5wlqb"]
 [ext_resource type="Script" path="res://Menus/MainMenu/MainMenu.gd" id="2_chuel"]
@@ -6,18 +6,24 @@
 [sub_resource type="LabelSettings" id="LabelSettings_okuas"]
 font_size = 30
 
+[sub_resource type="InputEventKey" id="InputEventKey_b5qir"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_626jf"]
+events = [SubResource("InputEventKey_b5qir")]
+
 [sub_resource type="LabelSettings" id="LabelSettings_rwgij"]
 font_size = 100
 
 [sub_resource type="LabelSettings" id="LabelSettings_qmfmh"]
 font_size = 20
 
-[node name="CanvasLayer" type="CanvasLayer"]
-
-[node name="MainMenu" type="CanvasLayer" parent="."]
+[node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("2_chuel")
 
-[node name="Control" type="Control" parent="MainMenu"]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Credits" type="Label" parent="MainMenu/Control"]
+[node name="Credits" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -41,7 +47,7 @@ text = "Made by MaxMorfiX"
 label_settings = SubResource("LabelSettings_okuas")
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="MainMenu/Control"]
+[node name="PlayButton" type="Button" parent="Control"]
 self_modulate = Color(0.141176, 0.294118, 0.988235, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -56,12 +62,13 @@ offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+shortcut = SubResource("Shortcut_626jf")
 icon = ExtResource("2_5wlqb")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="GameLogo" type="Label" parent="MainMenu/Control"]
+[node name="GameLogo" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,7 +87,7 @@ label_settings = SubResource("LabelSettings_rwgij")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Splash" type="Label" parent="MainMenu/Control/GameLogo"]
+[node name="Splash" type="Label" parent="Control/GameLogo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,4 +103,4 @@ grow_vertical = 2
 text = "What if you was an apple in Snake game?"
 label_settings = SubResource("LabelSettings_qmfmh")
 
-[connection signal="pressed" from="MainMenu/Control/PlayButton" to="MainMenu" method="play"]
+[connection signal="pressed" from="Control/PlayButton" to="." method="play"]

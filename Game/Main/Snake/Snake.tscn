@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cawr2rx46ov2t"]
+[gd_scene load_steps=4 format=3 uid="uid://cawr2rx46ov2t"]
 
 [ext_resource type="Script" path="res://Game/Main/Snake/Snake.gd" id="1_bj8ib"]
+[ext_resource type="Texture2D" uid="uid://j3vh80h5ryfm" path="res://Assets/SnakeHead.png" id="2_uivel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mq4vp"]
 radius = 15.0
@@ -11,11 +12,16 @@ max_rotate_speed = 10.0
 ang_deceleration = 1.0
 moveSpeed = 300.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mq4vp")
-
 [node name="ChangeTargetTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="SnakeHead" type="Sprite2D" parent="."]
+position = Vector2(4, 2.38419e-07)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_uivel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mq4vp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="ChangeTargetTimer" to="." method="_on_change_target_timer_timeout"]

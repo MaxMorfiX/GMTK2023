@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3jwnnd27qrph"]
+[gd_scene load_steps=11 format=3 uid="uid://b3jwnnd27qrph"]
 
 [ext_resource type="Script" path="res://Game/Main/SnakesSpawner.gd" id="1_nergm"]
 [ext_resource type="Script" path="res://Game/Main/Game.gd" id="1_ot3iw"]
@@ -13,19 +13,27 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_47ju6"]
 font_size = 100
 
+[sub_resource type="InputEventKey" id="InputEventKey_b5qir"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_tdsro"]
+events = [SubResource("InputEventKey_b5qir")]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_umuub")
 
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("1_ot3iw")
 
+[node name="SnakeTrails" type="Node2D" parent="Game"]
+
 [node name="Snakes" type="Node2D" parent="Game"]
 script = ExtResource("1_nergm")
 
 [node name="Apples" type="Node2D" parent="Game"]
 script = ExtResource("2_u2rm0")
-
-[node name="SnakeTrails" type="Node2D" parent="Game"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -96,6 +104,7 @@ offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+shortcut = SubResource("Shortcut_tdsro")
 icon = ExtResource("7_2ydrc")
 flat = true
 icon_alignment = 1
